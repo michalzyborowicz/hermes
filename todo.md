@@ -1,2 +1,6 @@
-popraw labele bo sie nie zgadzaja, pamietaj do kurwy nedzy ze kod ma byc po angielsku a tylko to strona wizualna po norwesku.
-popraw kolory w selectach
+do comita: dodalwm localStorage.
+
+
+Pamietaj ze input na enhets nr ma przyjmowac znaki specjalne jak myslniki
+
+zajmij sie lista z usunietymi oppdragami
