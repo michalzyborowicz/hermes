@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../dist/css/main.min.css">
+
+</head>
+
+<body>
+    <div class="hero"></div>
+
+    <div class="wrapper">
+
+        <div class="working-area">
+            <div class="form-area">
+                
+<h2>Ny task</h2>
+<form id="unitForm">
+    <label for="unitType">Enhets Type:</label>
+    <select id="unitType" name="unitType" required>
+        <option value="" selected  hidden>Velg...</option>
+        <option value="Tur 1">Tur 1</option>
+        <option value="Tur 2">Tur 2</option>
+        <option value="Tur 3">Tur 3</option>
+        <option value="Utland">Utland</option>
+        <option value="Eksport">Eksport</option>
+        <option value="Lasting">Lasting</option>
+        <option value="None">None</option>
+    </select>
+
+    <label for="unitNr">Enhets nr:</label>
+    <input type="text" id="unitNr" name="unitNr" pattern="[A-Za-z0-9]+" required>
+
+    <label for="unitPlacement">Enhets Plassering:</label>
+    <input type="number" id="unitPlacement" name="unitPlacement" required>
+
+    <label for="tasksType">Tasks Type:</label>
+    <select id="tasksType" name="tasksType" required>
+        <option value="" selected  hidden>Velg...</option>
+        <option value="Inn">Inn</option>
+        <option value="Ut">Ut</option>
+        <option value="Fix">Fix</option>
+    </select>
+
+    <label for="message">Melding:</label>
+    <textarea id="message" name="message" maxlength="360" rows="4" cols="50"></textarea>
+
+    <button class="submitBtn" type="submit">Kjør!</button>
+</form>            </div>
+
+            <div class="task-list">
+                <h2>Oppdrags Liste</h2>
+<div class="task-container" id="taskContainer">
+    <!-- <div class="list-item">
+        <div class="task">
+            <div class="unit-type">Tur 1</div>
+            <p class="unit-nr">123456</p>
+            <div class="task-type">INN</div>
+            <p class="unit-plasement">123</p>
+            <p class="message"></p>
+        </div>
+        <div class="button-box">
+            <button></button>
+            <button></button>
+            <button></button>
+        </div>
+    </div> -->
+</div>            </div>
+        </div>
+    </div>
+
+    <script src="../dist/js/main.min.js"></script>
+</body>
+
+</html>

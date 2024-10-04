@@ -2,3 +2,5 @@
 /src/
 gulpfile.js
 /html/
+package-lock.json
+package.json
