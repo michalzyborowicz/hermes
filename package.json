@@ -3,7 +3,8 @@
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
     "gulp-cli": "^3.0.0",
-    "rename": "^1.0.4"
+    "rename": "^1.0.4",
+    "xlsx": "^0.18.5"
   },
   "name": "hermes",
   "version": "1.0.0",
@@ -21,10 +22,10 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-kit": "^0.3.0",
     "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "gulp-sass": "^5.1.0",
-    "sass": "^1.49.7"
+    "sass": "^1.83.0"
   },
   "scripts": {
     "test": "run"

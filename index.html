@@ -1,87 +1,61 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="no">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hermes</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
-
+    <title>Oppgavehåndtering</title>
+    <!-- Dodanie biblioteki SheetJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="../dist/css/main.min.css">
-
+    <script src="dist/js/main.min.js" defer></script>
 </head>
 
 <body>
-    <div class="hero"></div>
+    <div class="container">
+        <aside class="form-section">
+            <form id="task-form">
+                <label for="unit-number">Enhetsnummer</label>
+                <input type="text" id="unit-number" placeholder="Skriv inn nummer" required>
 
-    <div class="wrapper">
+                <label for="location">Enhetsplassering</label>
+                <input type="text" id="location" placeholder="Skriv inn plassering" required>
 
-        <div class="working-area">
-            <div class="form-area">
-                
-<h2>Ny task</h2>
-<form id="unitForm">
-    <label for="unitType">Enhets Type:</label>
-    <select id="unitType" name="unitType" required>
-        <option value="" selected  hidden>Velg...</option>
-        <option value="Tur 1">Tur 1</option>
-        <option value="Tur 2">Tur 2</option>
-        <option value="Tur 3">Tur 3</option>
-        <option value="Utland">Utland</option>
-        <option value="Eksport">Eksport</option>
-        <option value="Lasting">Lasting</option>
-        <option value="None">None</option>
-    </select>
+                <label for="action">Type handling</label>
+                <select id="action" required>
+                    <option value="">Velg...</option>
+                    <option value="inn">Inn</option>
+                    <option value="ut">Ut</option>
+                    <option value="fix">Fix</option>
+                </select>
 
-    <label for="unitNr">Enhets nr:</label>
-    <input type="text" id="unitNr" name="unitNr" pattern="[A-Za-z0-9]+" required>
+                <label for="destination">Destinasjon</label>
+                <input type="text" id="destination" placeholder="Skriv inn destinasjon" required>
 
-    <label for="unitPlacement">Enhets Plassering:</label>
-    <input type="number" id="unitPlacement" name="unitPlacement" required>
+                <label for="message">Melding (valgfritt)</label>
+                <textarea id="message" rows="3" maxlength="160" placeholder="Skriv inn melding"></textarea>
 
-    <label for="tasksType">Tasks Type:</label>
-    <select id="tasksType" name="tasksType" required>
-        <option value="" selected  hidden>Velg...</option>
-        <option value="Inn">Inn</option>
-        <option value="Ut">Ut</option>
-        <option value="Fix">Fix</option>
-    </select>
+                <button type="submit">Legg til oppgave</button>
+            </form>
+        </aside>
 
-    <label for="message">Melding:</label>
-    <textarea id="message" name="message" maxlength="360" rows="4" cols="50"></textarea>
+        <main class="task-list">
+            <h2>Aktive oppgaver</h2>
+            <ul id="task-list">
+                <!-- Tasks will be dynamically rendered here -->
+            </ul>
+            <button id="view-completed-tasks">Vis fullførte oppgaver</button>
+        </main>
 
-    <button class="submitBtn" type="submit">Kjør!</button>
-</form>            </div>
-
-            <div class="task-list">
-                <h2>Oppdrags Liste</h2>
-<button class="newTaskBtn">Nye Oppdrager</button>
-<button class="oldTasksBtn">Utførte Oppdrager</button>
-<div class="task-container" id="taskContainer">
-    <!-- <div class="list-item">
-        <div class="task">
-            <div class="unit-type">Tur 1</div>
-            <p class="unit-nr">123456</p>
-            <div class="task-type">INN</div>
-            <p class="unit-plasement">123</p>
-            <p class="message"></p>
-        </div>
-        <div class="button-box">
-            <button></button>
-            <button></button>
-            <button></button>
-        </div>
-    </div> -->
-</div>            </div>
-        </div>
+        <section class="completed-tasks" style="display: none;">
+            <h2>Fullførte oppgaver</h2>
+            <ul id="completed-task-list">
+                <!-- Completed tasks will be dynamically rendered here -->
+            </ul>
+            <button id="back-to-active-tasks">Tilbake til aktive oppgaver</button>
+            <button id="export-to-excel">Eksporter til Excel</button>
+        </section>
     </div>
-
-    <script src="../dist/js/main.min.js"></script>
 </body>
 
 </html>
