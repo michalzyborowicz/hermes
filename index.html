@@ -9,6 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="/dist/css/main.min.css">
     <script src="dist/js/main.min.js" defer></script>
+    <link rel="manifest" href="/manifest.json">
+
 </head>
 
 <body>
@@ -38,8 +40,28 @@
                 <button type="submit">Legg til oppgave</button>
             </form>
         </aside>
+      
 
         <main class="task-list">
+            <div class="task-controls">
+                <h3>Filter and Sort Tasks</h3>
+                <div>
+                    <label for="filter-status">Filter by Status:</label>
+                    <select id="filter-status">
+                        <option value="all">All</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="attention">Attention</option>
+                        <option value="completed">Completed</option>
+                    </select>
+    
+                    <label for="sort-tasks">Sort by:</label>
+                    <select id="sort-tasks">
+                        <option value="created">Created Time</option>
+                        <option value="unitNumber">Unit Number</option>
+                    </select>
+                </div>
+            </div>
             <h2>Aktive oppgaver</h2>
             <ul id="task-list">
                 <!-- Tasks will be dynamically rendered here -->
