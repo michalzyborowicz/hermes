@@ -1,0 +1,31 @@
+server {
+    listen 80;
+    server_name hermesapp.online www.hermesapp.online;
+
+    # Redirect HTTP to HTTPS
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name hermesapp.online www.hermesapp.online;
+
+    # SSL Certificate paths
+    ssl_certificate /etc/letsencrypt/live/hermesapp.online/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/hermesapp.online/privkey.pem;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    root /var/www/hermes;
+
+    location / {
+        proxy_pass http://localhost:3000; # Port aplikacji Node.js
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+

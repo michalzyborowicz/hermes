@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oppgavehåndtering</title>
-    <!-- Dodanie biblioteki SheetJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <link rel="stylesheet" href="/dist/css/main.min.css">
-    <script src="dist/js/main.min.js" defer></script>
-    <link rel="manifest" href="/manifest.json">
+
+    <title>Hermes</title>
+
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="manifest" href="../manifest.json">
 
 </head>
 
@@ -40,7 +39,7 @@
                 <button type="submit">Legg til oppgave</button>
             </form>
         </aside>
-      
+
 
         <main class="task-list">
             <div class="task-controls">
@@ -54,7 +53,7 @@
                         <option value="attention">Attention</option>
                         <option value="completed">Completed</option>
                     </select>
-    
+
                     <label for="sort-tasks">Sort by:</label>
                     <select id="sort-tasks">
                         <option value="created">Created Time</option>
@@ -67,6 +66,8 @@
                 <!-- Tasks will be dynamically rendered here -->
             </ul>
             <button id="view-completed-tasks">Vis fullførte oppgaver</button>
+            <button id="delete-all-tasks">Delete All Tasks</button>
+
         </main>
 
         <section class="completed-tasks" style="display: none;">
@@ -78,6 +79,18 @@
             <button id="export-to-excel">Eksporter til Excel</button>
         </section>
     </div>
+
+
+
+    <script src="js/xlsx.full.min.js"></script>
+    <script src="js/main.min.js" defer></script>
+    <script>if (!localStorage.getItem('auth_token')) {
+            window.location.href = '/login.html'; // Redirecting to login page if not logged
+        }</script>
+
+
+
+
 </body>
 
 </html>

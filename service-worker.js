@@ -1,43 +1,38 @@
-const CACHE_NAME = "hermes-cache-v1";
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "/dist/css/main.min.css",
-  "/dist/js/main.min.js",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png",
-];
+const CACHE_NAME = 'hermes-app-cache-v1'
+const urlsToCache = ['/', '/index.html', '/css/main.css', '/js/main.js', '/images/logo.png']
 
-// Install Service Worker
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
-  );
-});
+// Install event: Cache static assets
+self.addEventListener('install', event => {
+	event.waitUntil(
+		caches.open(CACHE_NAME).then(cache => {
+			console.log('Opened cache')
+			return cache.addAll(urlsToCache)
+		})
+	)
+})
 
-// Fetch resources
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
-});
+// Activate event: Clean up old caches
+self.addEventListener('activate', event => {
+	event.waitUntil(
+		caches.keys().then(cacheNames => {
+			return Promise.all(
+				cacheNames.map(cacheName => {
+					if (cacheName !== CACHE_NAME) {
+						console.log('Deleting old cache:', cacheName)
+						return caches.delete(cacheName)
+					}
+				})
+			)
+		})
+	)
+})
 
-// Activate Service Worker and clean up old caches
-self.addEventListener("activate", (event) => {
-  const cacheWhitelist = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then((cacheNames) =>
-      Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);
-          }
-        })
-      )
-    )
-  );
-});
+// Fetch event: Serve cached files or fallback
+self.addEventListener('fetch', event => {
+	event.respondWith(
+		caches.match(event.request).then(response => {
+			// Return cached response if found
+			return response || fetch(event.request)
+		})
+	)
+})
