@@ -1,0 +1,26 @@
+@use 'variables';
+@use 'mixins';
+@use 'global';
+@use 'layout';
+@use 'tasks';
+@use 'sass:color';
+
+// Dodatkowy kod dla globalnego layoutu
+.body {
+	background-color: red;
+}
+.container {
+	display: flex;
+	height: 100vh;
+	gap: variables.$padding; // Użycie zmiennej z przestrzenią nazw
+}
+/* Ukrycie przycisku na urządzeniach mobilnych */
+#delete-all-tasks {
+	display: block;
+}
+
+@media (max-width: 768px) {
+	#delete-all-tasks {
+		display: none;
+	}
+}

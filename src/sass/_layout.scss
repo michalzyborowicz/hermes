@@ -1,0 +1,97 @@
+@use 'variables' as v;
+@use 'mixins';
+@use 'sass:color';
+.container {
+	display: flex; // Use flexbox for the main container
+	height: 100vh; // Full height of the viewport
+	gap: v.$padding; // Space between sections
+}
+
+.form-section {
+	width: 25%; // Form occupies 1/4 of the screen width
+	padding: v.$padding; // Internal spacing
+	background-color: v.$background-color; // Background color
+	border: 1px solid v.$secondary-color; // Border style
+
+	form {
+		display: flex;
+		flex-direction: column; // Stack form elements vertically
+		gap: v.$padding; // Space between form elements
+
+		label {
+			font-weight: bold; // Highlight labels
+		}
+
+		input,
+		select,
+		textarea,
+		button {
+			padding: 0.5rem; // Internal padding
+			font-size: v.$font-size-base; // Font size
+			border: 1px solid v.$secondary-color; // Border style
+			border-radius: v.$border-radius; // Rounded corners
+		}
+
+		button {
+			background-color: v.$primary-color; // Button background color
+			color: #fff; // Button text color
+
+			&:hover {
+				background-color: color.adjust(v.$primary-color, $lightness: 10%); // Darker color on hover
+			}
+		}
+	}
+
+	// Use mixin for responsive design
+	@include mixins.respond('tablet') {
+		display: none; // Hide the form on smaller screens
+	}
+}
+
+.task-list,
+.completed-tasks {
+	flex: 1; // Occupy remaining space in the container
+	padding: v.$padding; // Internal spacing
+	background-color: #fff; // White background
+	border-radius: v.$border-radius; // Rounded corners
+	border: 1px solid v.$secondary-color; // Border style
+	overflow-y: auto; // Allow vertical scrolling for long content
+
+	ul {
+		list-style: none; // Remove bullet points
+		padding: 0; // Remove default padding
+		margin: 0; // Remove default margin
+	}
+
+	li {
+		display: flex; // Arrange content in a row
+		justify-content: space-between; // Distribute space between items
+		align-items: center; // Align items vertically
+		padding: v.$padding; // Internal spacing
+		margin-bottom: v.$padding; // Space between list items
+		background-color: v.$background-color; // Background color
+		border: 1px solid v.$secondary-color; // Border style
+		border-radius: v.$border-radius; // Rounded corners
+
+		&:hover {
+			background-color: color.adjust(v.$background-color, $lightness: 10%); // Lighter color on hover
+		}
+	}
+
+	button {
+		background-color: v.$primary-color; // Button background color
+		color: #fff; // Button text color
+		padding: 0.5rem 1rem; // Internal padding
+		border: none; // No border
+		border-radius: v.$border-radius; // Rounded corners
+		cursor: pointer; // Change cursor to pointer
+
+		&:hover {
+			background-color: color.adjust(v.$primary-color, $lightness: 10%); // Darker color on hover
+		}
+	}
+}
+
+.completed-tasks {
+	display: none; // Hide the completed tasks section by default
+}

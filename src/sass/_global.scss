@@ -1,0 +1,28 @@
+@use 'variables' as v; // Load variables from 'variables.scss' without using the 'variables.' prefix.
+@use 'sass:color';
+
+body {
+	font-size: v.$font-size-base; // Base font size
+	color: v.$text-color; // Default text color
+	background-color: v.$background-color; // Background color
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	font-weight: 400;
+}
+
+button {
+	font-size: v.$font-size-base;
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: v.$border-radius;
+	cursor: pointer;
+}
+
+// Example of using darken to modify colors
+button:hover {
+	background-color: color.adjust(v.$button-color, $lightness: -10%); // Darken the button color on hover
+}

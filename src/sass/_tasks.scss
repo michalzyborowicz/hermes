@@ -1,0 +1,66 @@
+@use 'variables' as v;
+@use 'sass:color';  // Import variables to use colors, borders, etc.
+
+// Styles for task list buttons
+.task-list ul li div {
+	display: flex;
+	gap: 0.5rem; // Space between buttons
+}
+
+.task-list ul li button {
+	background-color: v.$primary-color; // Button background
+	color: #fff; // Button text color
+	border: none; // No border
+	border-radius: v.$border-radius; // Rounded corners
+	padding: 0.5rem 1rem; // Internal padding
+	cursor: pointer; // Pointer cursor for buttons
+
+	&:hover {
+		background-color: color.scale(v.$primary-color, $lightness: -10%); // Darker color on hover
+	}
+}
+.task-list ul li {
+	&.in-progress {
+		background-color: #ffc107; // Yellow background for in-progress tasks
+		color: #212529; // Text color for contrast
+	}
+
+	&.completed {
+		background-color: #28a745; // Green background for completed tasks
+		color: #fff; // Text color for completed tasks
+		opacity: 0.8; // Slightly dimmed for completed tasks
+	}
+
+	&.attention {
+		background-color: #dc3545; // Red background for attention tasks
+		color: #fff; // Text color for attention tasks
+	}
+
+	&.neutral {
+		background-color: v.$background-color; // Default background color
+		color: v.$text-color; // Default text color
+	}
+}
+// Task controls: Filter and Sort section
+.task-controls {
+	margin-bottom: 1rem;
+	display: flex;
+	justify-content: space-between; // Rozmieszcza elementy w równych odstępach
+	align-items: center;
+
+	label {
+		font-weight: bold;
+	}
+
+	select {
+		padding: 0.5rem;
+		font-size: 1rem;
+		border: 1px solid v.$border-color;
+		border-radius: v.$border-radius;
+		outline: none;
+
+		&:focus {
+			border-color: v.$primary-color;
+		}
+	}
+}
