@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// Render all tasks
 	function renderAllTasks() {
-		console.log('Rendering all tasks:', tasks) // Log tasks before rendering
 		taskList.innerHTML = ''
 		completedTaskList.innerHTML = ''
 
@@ -121,6 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		const sortBy = sortTasks.value
 
 		const sortedTasks = [...tasks].sort((a, b) => {
+			// 1. Tasks with the "attention" status go to the top of the list
+			if (a.status === 'attention' && b.status !== 'attention') return -1
+			if (b.status === 'attention' && a.status !== 'attention') return 1
+
+			// 2. If both tasks have the "attention" status, sort by the time the status was assigned
+			if (a.status === 'attention' && b.status === 'attention') {
+				return new Date(a.attentionAt) - new Date(b.attentionAt)
+			}
+
+			// 3. The rest of the tasks are sorted by the selected criterion
 			if (sortBy === 'unitNumber') {
 				return a.unitNumber.localeCompare(b.unitNumber)
 			} else if (sortBy === 'created') {
