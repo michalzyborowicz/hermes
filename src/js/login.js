@@ -44,7 +44,7 @@ loginForm.addEventListener('submit', async event => {
 
 			if (response.ok) {
 				// On success, store the token and redirect to the main page
-				localStorage.setItem('auth_token', data.token)
+				sessionStorage.setItem('auth_token', data.token)
 				window.location.href = '/' // Redirect to the main page
 			} else {
 				// On error, display the error message
@@ -59,7 +59,7 @@ loginForm.addEventListener('submit', async event => {
 
 	if (response.ok) {
 		// On success, store the token and redirect to the main page
-		localStorage.setItem('auth_token', data.token)
+		sessionStorage.setItem('auth_token', data.token)
 		window.location.href = '/' // Redirect to the main page
 	} else {
 		// On error, display the error message
