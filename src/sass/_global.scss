@@ -2,9 +2,10 @@
 @use 'sass:color';
 
 body {
+	background-color: skyblue;
 	font-size: v.$font-size-base; // Base font size
 	color: v.$text-color; // Default text color
-	background-color: v.$background-color; // Background color
+	
 }
 
 h1,
@@ -15,6 +16,7 @@ h3 {
 }
 
 button {
+	margin: 0.5rem;
 	font-size: v.$font-size-base;
 	padding: 0.5rem 1rem;
 	border: none;

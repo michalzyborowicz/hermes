@@ -10,9 +10,13 @@
 .form-section {
 	width: 25%; // Form occupies 1/4 of the screen width
 	padding: v.$padding; // Internal spacing
-	background-color: v.$background-color; // Background color
 	border: 1px solid v.$secondary-color; // Border style
-
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
 	form {
 		display: flex;
 		flex-direction: column; // Stack form elements vertically
@@ -52,10 +56,15 @@
 .completed-tasks {
 	flex: 1; // Occupy remaining space in the container
 	padding: v.$padding; // Internal spacing
-	background-color: #fff; // White background
 	border-radius: v.$border-radius; // Rounded corners
 	border: 1px solid v.$secondary-color; // Border style
 	overflow-y: auto; // Allow vertical scrolling for long content
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
 
 	ul {
 		list-style: none; // Remove bullet points
@@ -69,9 +78,12 @@
 		align-items: center; // Align items vertically
 		padding: v.$padding; // Internal spacing
 		margin-bottom: v.$padding; // Space between list items
-		background-color: v.$background-color; // Background color
-		border: 1px solid v.$secondary-color; // Border style
-		border-radius: v.$border-radius; // Rounded corners
+		background: rgba(255, 255, 255, 0.25);
+		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+		backdrop-filter: blur(4px);
+		-webkit-backdrop-filter: blur(4px);
+		border-radius: 10px;
+		border: 1px solid rgba(255, 255, 255, 0.18);
 
 		&:hover {
 			background-color: color.adjust(v.$background-color, $lightness: 10%); // Lighter color on hover

@@ -8,7 +8,7 @@
     <title>Hermes</title>
 
     <link rel="stylesheet" href="css/main.min.css">
-    <link rel="manifest" href="../manifest.json">
+    <link rel="manifest" href="manifest.json">
 
 </head>
 
@@ -83,8 +83,8 @@
 
 
     <script src="js/xlsx.full.min.js"></script>
-    <script src="js/main.min.js" defer></script>
-    <script>if (!sessionStorage.getItem('auth_token')) {
+    <script src="js/main.min.js"></script>
+    <script>if (!localStorage.getItem('auth_token')) {
             window.location.href = '/login.html'; // Redirecting to login page if not logged
 
 

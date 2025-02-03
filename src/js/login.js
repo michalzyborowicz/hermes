@@ -32,7 +32,7 @@ loginForm.addEventListener('submit', async event => {
 
 		try {
 			// Send login request to the server
-			const response = await fetch('/login', {
+			const response = await fetch('https://hermesapp.online/login', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ loginForm.addEventListener('submit', async event => {
 
 			if (response.ok) {
 				// On success, store the token and redirect to the main page
-				sessionStorage.setItem('auth_token', data.token)
+				localStorage.setItem('auth_token', data.token)
 				window.location.href = '/' // Redirect to the main page
 			} else {
 				// On error, display the error message
@@ -59,7 +59,7 @@ loginForm.addEventListener('submit', async event => {
 
 	if (response.ok) {
 		// On success, store the token and redirect to the main page
-		sessionStorage.setItem('auth_token', data.token)
+		localStorage.setItem('auth_token', data.token)
 		window.location.href = '/' // Redirect to the main page
 	} else {
 		// On error, display the error message

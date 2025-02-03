@@ -6,9 +6,7 @@
 @use 'sass:color';
 
 // Dodatkowy kod dla globalnego layoutu
-.body {
-	background-color: red;
-}
+
 .container {
 	display: flex;
 	height: 100vh;
@@ -18,6 +16,8 @@
 #delete-all-tasks {
 	display: block;
 }
+
+
 
 @media (max-width: 768px) {
 	#delete-all-tasks {
